@@ -1,9 +1,9 @@
 #pragma once
 
-
-#include "Copieur.h"
+#include "GestionnaireTelechargement.h"
 #include "Convertisseur.h"
 #include "Horloge.h"
+#include "ListViewNF.h"
 #include <string>
 #include <sstream>
 using namespace std;
@@ -20,10 +20,6 @@ namespace CopieurReseauLocal {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::IO;
-
-	
-	
-
 
 	/// <summary>
 	/// Description résumée de Form1
@@ -45,7 +41,6 @@ namespace CopieurReseauLocal {
 			SetCurrentDirectory(szthis);
 
 			Horloge::getInstance();
-
 			copieur=GestionnaireTelechargement::getInstance();
 
 			InitializeComponent();
@@ -53,7 +48,17 @@ namespace CopieurReseauLocal {
 			//TODO : ajoutez ici le code du constructeur
 			//
 			backgroundWorkerTelechargements->RunWorkerAsync();
-			//this->Hide();
+
+			//listViewTelechargementsDB = gcnew ListViewNF(this->listViewTelechargements);
+			////this->listViewTelechargementsDB->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(5) {this->ColonneLien, 
+			////	this->ColonneTaille, this->colonneVitesse, this->colonneProgression, this->colonneTempsRestant});
+			//
+			//this->tabTelechargement->Controls->Remove(this->listViewTelechargements);
+			//this->listViewTelechargements->Dispose();
+
+			//this->tabTelechargement->Controls->Add(listViewTelechargementsDB);
+			//this->listViewTelechargements->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(5) {this->ColonneLien, 
+			//	this->ColonneTaille, this->colonneVitesse, this->colonneProgression, this->colonneTempsRestant});
 		}
 
 	protected:
@@ -82,11 +87,12 @@ namespace CopieurReseauLocal {
 	private: System::Windows::Forms::TabPage^  tabTelechargement;
 	private: System::Windows::Forms::TabPage^  tabConfiguration;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
+	//private: ListViewNF^ listViewTelechargementsDB;
 	private: System::Windows::Forms::ListView^  listViewTelechargements;
+
 	private: System::Windows::Forms::ColumnHeader^  ColonneLien;
 	private: System::Windows::Forms::ColumnHeader^  ColonneTaille;
 	private: System::Windows::Forms::NotifyIcon^  notifyIcon;
-
 	private: System::Windows::Forms::ColumnHeader^  colonneVitesse;
 	private: System::Windows::Forms::ColumnHeader^  colonneProgression;
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStripAjouterTelechargement;
@@ -95,17 +101,8 @@ namespace CopieurReseauLocal {
 	private: System::ComponentModel::BackgroundWorker^  backgroundWorkerTelechargements;
 	private: System::Windows::Forms::Timer^  timerRaffraichissement;
 	private: System::Windows::Forms::ColumnHeader^  colonneTempsRestant;
-
-
 	private: System::ComponentModel::IContainer^  components;
-
-	private:
-		/// <summary>
-		/// Variable nécessaire au concepteur.
-		/// </summary>
-		bool isBGRunning;
 	private: System::Windows::Forms::MenuStrip^  menuStripPrincipal;
-
 	private: System::Windows::Forms::ToolStripMenuItem^  menuToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  aideToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  aProposToolStripMenuItem;
@@ -116,7 +113,12 @@ namespace CopieurReseauLocal {
 	private: System::Windows::Forms::ToolStripMenuItem^  ouvrirToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  réduireToolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  quitterToolStripMenuItem2;
-			 GestionnaireTelechargement* copieur;
+	private:
+		/// <summary>
+		/// Variable nécessaire au concepteur.
+		/// </summary>
+		bool isBGRunning;
+		GestionnaireTelechargement* copieur;
 
 
 #pragma region Windows Form Designer generated code
@@ -304,21 +306,21 @@ namespace CopieurReseauLocal {
 			// réduireToolStripMenuItem
 			// 
 			this->réduireToolStripMenuItem->Name = L"réduireToolStripMenuItem";
-			this->réduireToolStripMenuItem->Size = System::Drawing::Size(228, 22);
-			this->réduireToolStripMenuItem->Text = L"Sélectionner un Téléchargement";
+			this->réduireToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->réduireToolStripMenuItem->Text = L"Lancer un Téléchargement";
 			this->réduireToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::réduireToolStripMenuItem_Click);
 			// 
 			// quitterToolStripMenuItem
 			// 
 			this->quitterToolStripMenuItem->Name = L"quitterToolStripMenuItem";
-			this->quitterToolStripMenuItem->Size = System::Drawing::Size(228, 22);
+			this->quitterToolStripMenuItem->Size = System::Drawing::Size(201, 22);
 			this->quitterToolStripMenuItem->Text = L"Réduire";
 			this->quitterToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::quitterToolStripMenuItem_Click);
 			// 
 			// quitterToolStripMenuItem1
 			// 
 			this->quitterToolStripMenuItem1->Name = L"quitterToolStripMenuItem1";
-			this->quitterToolStripMenuItem1->Size = System::Drawing::Size(228, 22);
+			this->quitterToolStripMenuItem1->Size = System::Drawing::Size(201, 22);
 			this->quitterToolStripMenuItem1->Text = L"Quitter";
 			this->quitterToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Form1::quitterToolStripMenuItem1_Click);
 			// 
@@ -338,7 +340,7 @@ namespace CopieurReseauLocal {
 			// 
 			this->notifyIcon->ContextMenuStrip = this->contextMenuStripNotifyIcon;
 			this->notifyIcon->Icon = (cli::safe_cast<System::Drawing::Icon^  >(resources->GetObject(L"notifyIcon.Icon")));
-			this->notifyIcon->Text = L"Copieur";
+			this->notifyIcon->Text = L"Copieur réseau local";
 			this->notifyIcon->Visible = true;
 			this->notifyIcon->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::notifyIcon_MouseDoubleClick);
 			// 
@@ -441,16 +443,23 @@ private: System::Void backgroundWorkerTelechargements_DoWork(System::Object^  se
 private: 
 	System::Void raffraichissementListeTelechargements()
 	{
-		this->listViewTelechargements->Items->Clear();
+		unsigned short cpt=0;
+		bool isUpdating=false;
+
+		//this->listViewTelechargements->Items->Clear();
+		//this->listViewTelechargements->Items->AddRange(
 
 		String^ fileNameS = gcnew String(fichierTelechargements);
 		string fileName(fichierTelechargements);
 		if(File::Exists(fileNameS)) {
-
+			
 			ifstream is(fileName.c_str());
+			if(is.fail())
+				return;
+
 			string lien, taille, vitesseStr, progression , position, nomDestination;
 			string ligne;
-			
+		
 			while (getline(is,ligne)) {
 				stringstream bufSS(ligne);
 				getline(bufSS,lien,';');
@@ -472,17 +481,61 @@ private:
 					tempsRestant << tempsH << ":" << tempsM << ":" << tempsS; 				 
 				}
 
-				ListViewItem^ LVI = listViewTelechargements->Items->Add(gcnew String(lien.c_str()));
-				LVI->SubItems->Add(gcnew String(tailleMessage.c_str()));
-				LVI->SubItems->Add(gcnew String(vitesseStr.c_str()));
-				LVI->SubItems->Add(gcnew String(progression.c_str()));
-				LVI->SubItems->Add(gcnew String(tempsRestant.str().c_str()));
+				
+				if(listViewTelechargements->Items->Count<=cpt) {
+					ListViewItem^ LVI = listViewTelechargements->Items->Add(gcnew String(lien.c_str()));
+					LVI->SubItems->Add(gcnew String(tailleMessage.c_str()));
+					LVI->SubItems->Add(gcnew String(vitesseStr.c_str()));
+					LVI->SubItems->Add(gcnew String(progression.c_str()));
+					LVI->SubItems->Add(gcnew String(tempsRestant.str().c_str()));
+				}
+				else {
+					
+					if(String::Compare(listViewTelechargements->Items[cpt]->Text,gcnew String(lien.c_str()))!=0) {
+						if(isUpdating==false) {
+							this->listViewTelechargements->BeginUpdate();			
+							isUpdating=true;
+						}
+						listViewTelechargements->Items[cpt]->Text=gcnew String(lien.c_str());
+					}
+					if(String::Compare(listViewTelechargements->Items[cpt]->SubItems[1]->Text,gcnew String(tailleMessage.c_str()))!=0) {
+						if(isUpdating==false) {
+							this->listViewTelechargements->BeginUpdate();			
+							isUpdating=true;
+						}
+						listViewTelechargements->Items[cpt]->SubItems[1]->Text=gcnew String(tailleMessage.c_str());
+					}
+					if(String::Compare(listViewTelechargements->Items[cpt]->SubItems[2]->Text,gcnew String(vitesseStr.c_str()))!=0) {
+						if(isUpdating==false) {
+							this->listViewTelechargements->BeginUpdate();			
+							isUpdating=true;
+						}
+						listViewTelechargements->Items[cpt]->SubItems[2]->Text=gcnew String(vitesseStr.c_str());
+					}
+					if(String::Compare(listViewTelechargements->Items[cpt]->SubItems[3]->Text,gcnew String(progression.c_str()))!=0) {
+						if(isUpdating==false) {
+							this->listViewTelechargements->BeginUpdate();			
+							isUpdating=true;
+						}
+						listViewTelechargements->Items[cpt]->SubItems[3]->Text=gcnew String(progression.c_str());
+					}
+					if(String::Compare(listViewTelechargements->Items[cpt]->SubItems[4]->Text,gcnew String(tempsRestant.str().c_str()))!=0) {
+						if(isUpdating==false) {
+							this->listViewTelechargements->BeginUpdate();			
+							isUpdating=true;
+						}
+						listViewTelechargements->Items[cpt]->SubItems[4]->Text=gcnew String(tempsRestant.str().c_str());
+					}
+				}
+				cpt++;
 			}
 		}
 		else {
 			ofstream fichier (fichierTelechargements);
 			fichier.close();
 		}
+		if(isUpdating==true)
+			this->listViewTelechargements->EndUpdate();
 	}
 
 
@@ -499,7 +552,12 @@ private: System::Void notifyIcon_MouseDoubleClick(System::Object^  sender, Syste
 			 }
 		 }
 private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
-			Hide();
+#ifdef DEBUG
+			 this->WindowState::set(FormWindowState::Normal);
+			 Show();
+#else
+			 Hide();
+#endif
 		 }
 private: System::Void réduireToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			openFileDialogSelectionTelechargement->ShowDialog();
@@ -508,17 +566,17 @@ private: System::Void quitterToolStripMenuItem_Click(System::Object^  sender, Sy
 			Hide();
 		 }
 private: System::Void quitterToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 this->Close();
+			this->Close();
 		 }
 private: System::Void ouvrirToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 this->Show();
-			 this->WindowState = System::Windows::Forms::FormWindowState::Normal; // not minimize
+			this->Show();
+			this->WindowState = System::Windows::Forms::FormWindowState::Normal; // not minimize
 		 }
 private: System::Void réduireToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 Hide();
+			Hide();
 		 }
 private: System::Void quitterToolStripMenuItem2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 this->Close();
+			this->Close();
 		 }
 };
 }

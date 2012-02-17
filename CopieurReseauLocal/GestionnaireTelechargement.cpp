@@ -1,4 +1,5 @@
-#include "Copieur.h"
+#include "GestionnaireTelechargement.h"
+#include "Outils.h"
 
 GestionnaireTelechargement* GestionnaireTelechargement::_singleton=0;
 
@@ -269,7 +270,7 @@ bool GestionnaireTelechargement::update()
 
 
 	if(horloge->timerInferieurHorloge(timestampVitesse)) {
-		horloge->horlogePlusDelai(timestampVitesse, 1);
+		horloge->horlogePlusDelai(timestampVitesse, 10);
 
 		for (map<string,list<Transfert>>::iterator itServeurs=telechargements.begin();itServeurs!=telechargements.end();itServeurs++) {
 			for(list<Transfert>::iterator itTransfert=itServeurs->second.begin();itTransfert!=itServeurs->second.end();itTransfert++) {
@@ -283,7 +284,7 @@ bool GestionnaireTelechargement::update()
 				float progressionRatio = ((float)itTransfert->positionCourante)/((float)itTransfert->taille);
 				itTransfert->progressionPourcent=(int)(progressionRatio*100);
 
-				float nouvelleVitesse = (float)(itTransfert->positionCourante - itTransfert->dernierePosition)/1024;
+				float nouvelleVitesse = (float)(itTransfert->positionCourante - itTransfert->dernierePosition)/10240;
 				itTransfert->vitesses.push_back(nouvelleVitesse);
 				if(itTransfert->vitesses.size()>nombreFiltre)
 					itTransfert->vitesses.erase(itTransfert->vitesses.begin());

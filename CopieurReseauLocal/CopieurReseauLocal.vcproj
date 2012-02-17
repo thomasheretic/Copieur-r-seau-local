@@ -200,19 +200,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Copieur.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CopieurReseauLocal.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Debug.cpp"
 				>
 			</File>
 			<File
+				RelativePath=".\GestionnaireTelechargement.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Horloge.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Main.cpp"
 				>
 			</File>
 			<File
@@ -235,6 +235,10 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\Transert.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Fichiers d&apos;en-tête"
@@ -243,10 +247,6 @@
 			>
 			<File
 				RelativePath=".\Convertisseur.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Copieur.h"
 				>
 			</File>
 			<File
@@ -264,7 +264,19 @@
 				</File>
 			</File>
 			<File
+				RelativePath=".\GestionnaireTelechargement.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Horloge.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ListViewNF.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Outils.h"
 				>
 			</File>
 			<File
@@ -273,6 +285,10 @@
 			</File>
 			<File
 				RelativePath=".\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Transfert.h"
 				>
 			</File>
 		</Filter>
@@ -290,14 +306,6 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath="..\Debug\logs.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\ReadMe.txt"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>

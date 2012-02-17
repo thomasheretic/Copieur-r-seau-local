@@ -21,14 +21,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3A3A5486DCE34047ADFF8F548EF9DE65"
-        "OwnerKey" = "8:_FD63BDD978884395B08AB3B5618601AF"
+        "MsmKey" = "8:_2916A7C795AA4CAB98A1F9D24BB6B0A2"
+        "OwnerKey" = "8:_19516CBA00464DD2888F9D34B8E0517E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_FD63BDD978884395B08AB3B5618601AF"
-        "OwnerKey" = "8:_19516CBA00464DD2888F9D34B8E0517E"
+        "MsmKey" = "8:_5940271FAB254684915FDD713E137FFE"
+        "OwnerKey" = "8:_2916A7C795AA4CAB98A1F9D24BB6B0A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -198,14 +198,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Copieur réseau local"
-        "ProductCode" = "8:{BF9EE43F-E6F9-4132-B773-A30BA7AB7A9F}"
-        "PackageCode" = "8:{E1BA3C7E-DCC9-4341-843E-D9F341AF4149}"
+        "ProductCode" = "8:{5F986326-A2AC-4895-BDB2-22F95B3E639D}"
+        "PackageCode" = "8:{52C56362-7826-457F-B0C6-CAED1FBB3436}"
         "UpgradeCode" = "8:{E3A8CC4F-3EC9-4617-B253-B810ECD65348}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.3"
         "Manufacturer" = "8:RThomas"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -728,11 +728,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_3A3A5486DCE34047ADFF8F548EF9DE65"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_2916A7C795AA4CAB98A1F9D24BB6B0A2"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:microsoft_vc90_crt_x86.msm"
+            "SourcePath" = "8:policy_9_0_Microsoft_VC90_CRT_x86.msm"
                 "Properties"
                 {
                 }
@@ -742,11 +742,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_FD63BDD978884395B08AB3B5618601AF"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_5940271FAB254684915FDD713E137FFE"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:policy_9_0_Microsoft_VC90_CRT_x86.msm"
+            "SourcePath" = "8:microsoft_vc90_crt_x86.msm"
                 "Properties"
                 {
                 }

@@ -1,3 +1,4 @@
+
 // CopieurReseauLocal.cpp : fichier projet principal.
 
 #include "stdafx.h"
